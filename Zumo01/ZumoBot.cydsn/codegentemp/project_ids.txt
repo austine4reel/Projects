@@ -1,0 +1,6 @@
+C:\Users\austi\Documents\Zumo01\ZumoBot.cydsn\ZumoBot.cyprj|fbf168fb-5311-4633-b450-a41287305d2c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|47ad05cf-c2eb-4c1d-8b1e-f770a070ddf2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|556ce96b-ee21-4220-9925-315e99947850
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ea86808e-dba4-4b31-a96a-2ea1e2e81275
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|ba29c89f-0b45-42c8-a7a5-d8b45214b196
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev\psoc3\AnalogDevice\PSoC35AnalogDevice.cylib\PSoC35AnalogDevice.cyprj|de385096-1392-44ee-8664-f5fd58819aee

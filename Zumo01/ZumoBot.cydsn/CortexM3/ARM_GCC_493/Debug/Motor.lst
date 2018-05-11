@@ -1,0 +1,1655 @@
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Motor.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.motor_start,"ax",%progbits
+  19              		.align	2
+  20              		.global	motor_start
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	motor_start, %function
+  24              	motor_start:
+  25              	.LFB63:
+  26              		.file 1 "ZumoLibrary\\Motor.c"
+   1:ZumoLibrary/Motor.c **** /**
+   2:ZumoLibrary/Motor.c ****  * @file    Motor.c
+   3:ZumoLibrary/Motor.c ****  * @brief   Basic methods for operating motor sensor. For more details, please refer to Motor.h fil
+   4:ZumoLibrary/Motor.c ****  * @details included in Zumo shield
+   5:ZumoLibrary/Motor.c **** */
+   6:ZumoLibrary/Motor.c **** #include "Motor.h"
+   7:ZumoLibrary/Motor.c **** 
+   8:ZumoLibrary/Motor.c **** 
+   9:ZumoLibrary/Motor.c **** /**
+  10:ZumoLibrary/Motor.c **** * @brief    Starting motor sensors
+  11:ZumoLibrary/Motor.c **** * @details  
+  12:ZumoLibrary/Motor.c **** */
+  13:ZumoLibrary/Motor.c **** void motor_start()
+  14:ZumoLibrary/Motor.c **** {
+  27              		.loc 1 14 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  15:ZumoLibrary/Motor.c ****     PWM_Start();
+  35              		.loc 1 15 0
+  36 0002 FFF7FEFF 		bl	PWM_Start
+  37              	.LVL0:
+  38 0006 08BD     		pop	{r3, pc}
+  39              		.cfi_endproc
+  40              	.LFE63:
+  41              		.size	motor_start, .-motor_start
+  42              		.section	.text.motor_stop,"ax",%progbits
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 2
+
+
+  43              		.align	2
+  44              		.global	motor_stop
+  45              		.thumb
+  46              		.thumb_func
+  47              		.type	motor_stop, %function
+  48              	motor_stop:
+  49              	.LFB64:
+  16:ZumoLibrary/Motor.c **** }
+  17:ZumoLibrary/Motor.c **** 
+  18:ZumoLibrary/Motor.c **** 
+  19:ZumoLibrary/Motor.c **** /**
+  20:ZumoLibrary/Motor.c **** * @brief    Stopping motor sensors
+  21:ZumoLibrary/Motor.c **** * @details
+  22:ZumoLibrary/Motor.c **** */
+  23:ZumoLibrary/Motor.c **** void motor_stop()
+  24:ZumoLibrary/Motor.c **** {
+  50              		.loc 1 24 0
+  51              		.cfi_startproc
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54 0000 08B5     		push	{r3, lr}
+  55              		.cfi_def_cfa_offset 8
+  56              		.cfi_offset 3, -8
+  57              		.cfi_offset 14, -4
+  25:ZumoLibrary/Motor.c ****     PWM_Stop();
+  58              		.loc 1 25 0
+  59 0002 FFF7FEFF 		bl	PWM_Stop
+  60              	.LVL1:
+  61 0006 08BD     		pop	{r3, pc}
+  62              		.cfi_endproc
+  63              	.LFE64:
+  64              		.size	motor_stop, .-motor_stop
+  65              		.section	.text.motor_forward,"ax",%progbits
+  66              		.align	2
+  67              		.global	motor_forward
+  68              		.thumb
+  69              		.thumb_func
+  70              		.type	motor_forward, %function
+  71              	motor_forward:
+  72              	.LFB65:
+  26:ZumoLibrary/Motor.c **** }
+  27:ZumoLibrary/Motor.c **** 
+  28:ZumoLibrary/Motor.c **** 
+  29:ZumoLibrary/Motor.c **** /**
+  30:ZumoLibrary/Motor.c **** * @brief    Moving motors forward
+  31:ZumoLibrary/Motor.c **** * @details  giveing same speed to each side of PWM to make motors go forward
+  32:ZumoLibrary/Motor.c **** * @param    uint8 speed : speed value
+  33:ZumoLibrary/Motor.c **** * @param    uint32 delay : delay time
+  34:ZumoLibrary/Motor.c **** */
+  35:ZumoLibrary/Motor.c **** void motor_forward(uint8 speed,uint32 delay)
+  36:ZumoLibrary/Motor.c **** {
+  73              		.loc 1 36 0
+  74              		.cfi_startproc
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77              	.LVL2:
+  78 0000 38B5     		push	{r3, r4, r5, lr}
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 3
+
+
+  79              		.cfi_def_cfa_offset 16
+  80              		.cfi_offset 3, -16
+  81              		.cfi_offset 4, -12
+  82              		.cfi_offset 5, -8
+  83              		.cfi_offset 14, -4
+  84 0002 0446     		mov	r4, r0
+  85 0004 0D46     		mov	r5, r1
+  37:ZumoLibrary/Motor.c ****     MotorDirLeft_Write(0);      // set LeftMotor forward mode
+  86              		.loc 1 37 0
+  87 0006 0020     		movs	r0, #0
+  88              	.LVL3:
+  89 0008 FFF7FEFF 		bl	MotorDirLeft_Write
+  90              	.LVL4:
+  38:ZumoLibrary/Motor.c ****     MotorDirRight_Write(0);     // set RightMotor forward mode
+  91              		.loc 1 38 0
+  92 000c 0020     		movs	r0, #0
+  93 000e FFF7FEFF 		bl	MotorDirRight_Write
+  94              	.LVL5:
+  39:ZumoLibrary/Motor.c ****     PWM_WriteCompare1(speed); 
+  95              		.loc 1 39 0
+  96 0012 2046     		mov	r0, r4
+  97 0014 FFF7FEFF 		bl	PWM_WriteCompare1
+  98              	.LVL6:
+  40:ZumoLibrary/Motor.c ****     PWM_WriteCompare2(speed); 
+  99              		.loc 1 40 0
+ 100 0018 2046     		mov	r0, r4
+ 101 001a FFF7FEFF 		bl	PWM_WriteCompare2
+ 102              	.LVL7:
+  41:ZumoLibrary/Motor.c ****     CyDelay(delay);
+ 103              		.loc 1 41 0
+ 104 001e 2846     		mov	r0, r5
+ 105 0020 FFF7FEFF 		bl	CyDelay
+ 106              	.LVL8:
+ 107 0024 38BD     		pop	{r3, r4, r5, pc}
+ 108              		.cfi_endproc
+ 109              	.LFE65:
+ 110              		.size	motor_forward, .-motor_forward
+ 111 0026 00BF     		.section	.text.prmotor_turn,"ax",%progbits
+ 112              		.align	2
+ 113              		.global	prmotor_turn
+ 114              		.thumb
+ 115              		.thumb_func
+ 116              		.type	prmotor_turn, %function
+ 117              	prmotor_turn:
+ 118              	.LFB66:
+  42:ZumoLibrary/Motor.c **** }
+  43:ZumoLibrary/Motor.c **** void prmotor_turn(uint8 l_speed, uint8 r_speed, uint32 delay)
+  44:ZumoLibrary/Motor.c **** {
+ 119              		.loc 1 44 0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              	.LVL9:
+ 124 0000 70B5     		push	{r4, r5, r6, lr}
+ 125              		.cfi_def_cfa_offset 16
+ 126              		.cfi_offset 4, -16
+ 127              		.cfi_offset 5, -12
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 4
+
+
+ 128              		.cfi_offset 6, -8
+ 129              		.cfi_offset 14, -4
+ 130 0002 0646     		mov	r6, r0
+ 131 0004 0D46     		mov	r5, r1
+ 132 0006 1446     		mov	r4, r2
+  45:ZumoLibrary/Motor.c ****     MotorDirLeft_Write(0);
+ 133              		.loc 1 45 0
+ 134 0008 0020     		movs	r0, #0
+ 135              	.LVL10:
+ 136 000a FFF7FEFF 		bl	MotorDirLeft_Write
+ 137              	.LVL11:
+  46:ZumoLibrary/Motor.c ****     MotorDirRight_Write(1);
+ 138              		.loc 1 46 0
+ 139 000e 0120     		movs	r0, #1
+ 140 0010 FFF7FEFF 		bl	MotorDirRight_Write
+ 141              	.LVL12:
+  47:ZumoLibrary/Motor.c ****     PWM_WriteCompare1(l_speed); 
+ 142              		.loc 1 47 0
+ 143 0014 3046     		mov	r0, r6
+ 144 0016 FFF7FEFF 		bl	PWM_WriteCompare1
+ 145              	.LVL13:
+  48:ZumoLibrary/Motor.c ****     PWM_WriteCompare2(r_speed); 
+ 146              		.loc 1 48 0
+ 147 001a 2846     		mov	r0, r5
+ 148 001c FFF7FEFF 		bl	PWM_WriteCompare2
+ 149              	.LVL14:
+  49:ZumoLibrary/Motor.c ****     CyDelay(delay);
+ 150              		.loc 1 49 0
+ 151 0020 2046     		mov	r0, r4
+ 152 0022 FFF7FEFF 		bl	CyDelay
+ 153              	.LVL15:
+ 154 0026 70BD     		pop	{r4, r5, r6, pc}
+ 155              		.cfi_endproc
+ 156              	.LFE66:
+ 157              		.size	prmotor_turn, .-prmotor_turn
+ 158              		.section	.text.plmotor_turn,"ax",%progbits
+ 159              		.align	2
+ 160              		.global	plmotor_turn
+ 161              		.thumb
+ 162              		.thumb_func
+ 163              		.type	plmotor_turn, %function
+ 164              	plmotor_turn:
+ 165              	.LFB67:
+  50:ZumoLibrary/Motor.c **** }
+  51:ZumoLibrary/Motor.c **** void plmotor_turn(uint8 l_speed, uint8 r_speed, uint32 delay)
+  52:ZumoLibrary/Motor.c **** {
+ 166              		.loc 1 52 0
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 170              	.LVL16:
+ 171 0000 70B5     		push	{r4, r5, r6, lr}
+ 172              		.cfi_def_cfa_offset 16
+ 173              		.cfi_offset 4, -16
+ 174              		.cfi_offset 5, -12
+ 175              		.cfi_offset 6, -8
+ 176              		.cfi_offset 14, -4
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 5
+
+
+ 177 0002 0646     		mov	r6, r0
+ 178 0004 0D46     		mov	r5, r1
+ 179 0006 1446     		mov	r4, r2
+  53:ZumoLibrary/Motor.c ****     MotorDirLeft_Write(1);
+ 180              		.loc 1 53 0
+ 181 0008 0120     		movs	r0, #1
+ 182              	.LVL17:
+ 183 000a FFF7FEFF 		bl	MotorDirLeft_Write
+ 184              	.LVL18:
+  54:ZumoLibrary/Motor.c ****     MotorDirRight_Write(0);
+ 185              		.loc 1 54 0
+ 186 000e 0020     		movs	r0, #0
+ 187 0010 FFF7FEFF 		bl	MotorDirRight_Write
+ 188              	.LVL19:
+  55:ZumoLibrary/Motor.c ****     PWM_WriteCompare1(l_speed); 
+ 189              		.loc 1 55 0
+ 190 0014 3046     		mov	r0, r6
+ 191 0016 FFF7FEFF 		bl	PWM_WriteCompare1
+ 192              	.LVL20:
+  56:ZumoLibrary/Motor.c ****     PWM_WriteCompare2(r_speed); 
+ 193              		.loc 1 56 0
+ 194 001a 2846     		mov	r0, r5
+ 195 001c FFF7FEFF 		bl	PWM_WriteCompare2
+ 196              	.LVL21:
+  57:ZumoLibrary/Motor.c ****     CyDelay(delay);
+ 197              		.loc 1 57 0
+ 198 0020 2046     		mov	r0, r4
+ 199 0022 FFF7FEFF 		bl	CyDelay
+ 200              	.LVL22:
+ 201 0026 70BD     		pop	{r4, r5, r6, pc}
+ 202              		.cfi_endproc
+ 203              	.LFE67:
+ 204              		.size	plmotor_turn, .-plmotor_turn
+ 205              		.section	.text.motor_turn,"ax",%progbits
+ 206              		.align	2
+ 207              		.global	motor_turn
+ 208              		.thumb
+ 209              		.thumb_func
+ 210              		.type	motor_turn, %function
+ 211              	motor_turn:
+ 212              	.LFB68:
+  58:ZumoLibrary/Motor.c **** }
+  59:ZumoLibrary/Motor.c **** 
+  60:ZumoLibrary/Motor.c **** /**
+  61:ZumoLibrary/Motor.c **** * @brief    Moving motors to make a turn 
+  62:ZumoLibrary/Motor.c **** * @details  moving left when l_speed < r_speed or moving right when l_speed > r_speed
+  63:ZumoLibrary/Motor.c **** * @param    uint8 l_speed : left motor speed value
+  64:ZumoLibrary/Motor.c **** * @param    uint8 r_speed : right motor speed value
+  65:ZumoLibrary/Motor.c **** * @param    uint32 delay : delay time
+  66:ZumoLibrary/Motor.c **** */
+  67:ZumoLibrary/Motor.c **** void motor_turn(uint8 l_speed, uint8 r_speed, uint32 delay)
+  68:ZumoLibrary/Motor.c **** {
+ 213              		.loc 1 68 0
+ 214              		.cfi_startproc
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217              	.LVL23:
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 6
+
+
+ 218 0000 38B5     		push	{r3, r4, r5, lr}
+ 219              		.cfi_def_cfa_offset 16
+ 220              		.cfi_offset 3, -16
+ 221              		.cfi_offset 4, -12
+ 222              		.cfi_offset 5, -8
+ 223              		.cfi_offset 14, -4
+ 224 0002 0D46     		mov	r5, r1
+ 225 0004 1446     		mov	r4, r2
+  69:ZumoLibrary/Motor.c ****     PWM_WriteCompare1(l_speed); 
+ 226              		.loc 1 69 0
+ 227 0006 FFF7FEFF 		bl	PWM_WriteCompare1
+ 228              	.LVL24:
+  70:ZumoLibrary/Motor.c ****     PWM_WriteCompare2(r_speed); 
+ 229              		.loc 1 70 0
+ 230 000a 2846     		mov	r0, r5
+ 231 000c FFF7FEFF 		bl	PWM_WriteCompare2
+ 232              	.LVL25:
+  71:ZumoLibrary/Motor.c ****     CyDelay(delay);
+ 233              		.loc 1 71 0
+ 234 0010 2046     		mov	r0, r4
+ 235 0012 FFF7FEFF 		bl	CyDelay
+ 236              	.LVL26:
+ 237 0016 38BD     		pop	{r3, r4, r5, pc}
+ 238              		.cfi_endproc
+ 239              	.LFE68:
+ 240              		.size	motor_turn, .-motor_turn
+ 241              		.section	.text.motor_backward,"ax",%progbits
+ 242              		.align	2
+ 243              		.global	motor_backward
+ 244              		.thumb
+ 245              		.thumb_func
+ 246              		.type	motor_backward, %function
+ 247              	motor_backward:
+ 248              	.LFB69:
+  72:ZumoLibrary/Motor.c **** }
+  73:ZumoLibrary/Motor.c **** 
+  74:ZumoLibrary/Motor.c **** 
+  75:ZumoLibrary/Motor.c **** /**
+  76:ZumoLibrary/Motor.c **** * @brief    Moving motors backward
+  77:ZumoLibrary/Motor.c **** * @details  setting backward mode to each motors and gives same speed to each side of PWM
+  78:ZumoLibrary/Motor.c **** * @param    uint8 speed : speed value
+  79:ZumoLibrary/Motor.c **** * @param    uint32 delay : delay time
+  80:ZumoLibrary/Motor.c **** */
+  81:ZumoLibrary/Motor.c **** void motor_backward(uint8 speed,uint32 delay)
+  82:ZumoLibrary/Motor.c **** {
+ 249              		.loc 1 82 0
+ 250              		.cfi_startproc
+ 251              		@ args = 0, pretend = 0, frame = 0
+ 252              		@ frame_needed = 0, uses_anonymous_args = 0
+ 253              	.LVL27:
+ 254 0000 38B5     		push	{r3, r4, r5, lr}
+ 255              		.cfi_def_cfa_offset 16
+ 256              		.cfi_offset 3, -16
+ 257              		.cfi_offset 4, -12
+ 258              		.cfi_offset 5, -8
+ 259              		.cfi_offset 14, -4
+ 260 0002 0446     		mov	r4, r0
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 7
+
+
+ 261 0004 0D46     		mov	r5, r1
+  83:ZumoLibrary/Motor.c ****     MotorDirLeft_Write(1);      // set LeftMotor backward mode
+ 262              		.loc 1 83 0
+ 263 0006 0120     		movs	r0, #1
+ 264              	.LVL28:
+ 265 0008 FFF7FEFF 		bl	MotorDirLeft_Write
+ 266              	.LVL29:
+  84:ZumoLibrary/Motor.c ****     MotorDirRight_Write(1);     // set RightMotor backward mode
+ 267              		.loc 1 84 0
+ 268 000c 0120     		movs	r0, #1
+ 269 000e FFF7FEFF 		bl	MotorDirRight_Write
+ 270              	.LVL30:
+  85:ZumoLibrary/Motor.c ****     PWM_WriteCompare1(speed); 
+ 271              		.loc 1 85 0
+ 272 0012 2046     		mov	r0, r4
+ 273 0014 FFF7FEFF 		bl	PWM_WriteCompare1
+ 274              	.LVL31:
+  86:ZumoLibrary/Motor.c ****     PWM_WriteCompare2(speed); 
+ 275              		.loc 1 86 0
+ 276 0018 2046     		mov	r0, r4
+ 277 001a FFF7FEFF 		bl	PWM_WriteCompare2
+ 278              	.LVL32:
+  87:ZumoLibrary/Motor.c ****     CyDelay(delay);
+ 279              		.loc 1 87 0
+ 280 001e 2846     		mov	r0, r5
+ 281 0020 FFF7FEFF 		bl	CyDelay
+ 282              	.LVL33:
+ 283 0024 38BD     		pop	{r3, r4, r5, pc}
+ 284              		.cfi_endproc
+ 285              	.LFE69:
+ 286              		.size	motor_backward, .-motor_backward
+ 287 0026 00BF     		.text
+ 288              	.Letext0:
+ 289              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 290              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 291              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 292              		.file 5 "Generated_Source\\PSoC5/PWM.h"
+ 293              		.file 6 "Generated_Source\\PSoC5/MotorDirLeft.h"
+ 294              		.file 7 "Generated_Source\\PSoC5/MotorDirRight.h"
+ 295              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 296              		.file 9 "Generated_Source\\PSoC5/CyLib.h"
+ 297              		.section	.debug_info,"",%progbits
+ 298              	.Ldebug_info0:
+ 299 0000 36040000 		.4byte	0x436
+ 300 0004 0400     		.2byte	0x4
+ 301 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 302 000a 04       		.byte	0x4
+ 303 000b 01       		.uleb128 0x1
+ 304 000c 04010000 		.4byte	.LASF34
+ 305 0010 01       		.byte	0x1
+ 306 0011 E9000000 		.4byte	.LASF35
+ 307 0015 8E000000 		.4byte	.LASF36
+ 308 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 309 001d 00000000 		.4byte	0
+ 310 0021 00000000 		.4byte	.Ldebug_line0
+ 311 0025 02       		.uleb128 0x2
+ 312 0026 01       		.byte	0x1
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 8
+
+
+ 313 0027 06       		.byte	0x6
+ 314 0028 00000000 		.4byte	.LASF0
+ 315 002c 02       		.uleb128 0x2
+ 316 002d 01       		.byte	0x1
+ 317 002e 08       		.byte	0x8
+ 318 002f 5B000000 		.4byte	.LASF1
+ 319 0033 02       		.uleb128 0x2
+ 320 0034 02       		.byte	0x2
+ 321 0035 05       		.byte	0x5
+ 322 0036 2A020000 		.4byte	.LASF2
+ 323 003a 02       		.uleb128 0x2
+ 324 003b 02       		.byte	0x2
+ 325 003c 07       		.byte	0x7
+ 326 003d 5B020000 		.4byte	.LASF3
+ 327 0041 03       		.uleb128 0x3
+ 328 0042 0C000000 		.4byte	.LASF9
+ 329 0046 02       		.byte	0x2
+ 330 0047 3F       		.byte	0x3f
+ 331 0048 4C000000 		.4byte	0x4c
+ 332 004c 02       		.uleb128 0x2
+ 333 004d 04       		.byte	0x4
+ 334 004e 05       		.byte	0x5
+ 335 004f 47020000 		.4byte	.LASF4
+ 336 0053 02       		.uleb128 0x2
+ 337 0054 04       		.byte	0x4
+ 338 0055 07       		.byte	0x7
+ 339 0056 69000000 		.4byte	.LASF5
+ 340 005a 02       		.uleb128 0x2
+ 341 005b 08       		.byte	0x8
+ 342 005c 05       		.byte	0x5
+ 343 005d 0A020000 		.4byte	.LASF6
+ 344 0061 02       		.uleb128 0x2
+ 345 0062 08       		.byte	0x8
+ 346 0063 07       		.byte	0x7
+ 347 0064 A7010000 		.4byte	.LASF7
+ 348 0068 04       		.uleb128 0x4
+ 349 0069 04       		.byte	0x4
+ 350 006a 05       		.byte	0x5
+ 351 006b 696E7400 		.ascii	"int\000"
+ 352 006f 02       		.uleb128 0x2
+ 353 0070 04       		.byte	0x4
+ 354 0071 07       		.byte	0x7
+ 355 0072 92010000 		.4byte	.LASF8
+ 356 0076 03       		.uleb128 0x3
+ 357 0077 47000000 		.4byte	.LASF10
+ 358 007b 03       		.byte	0x3
+ 359 007c 2C       		.byte	0x2c
+ 360 007d 41000000 		.4byte	0x41
+ 361 0081 05       		.uleb128 0x5
+ 362 0082 41000000 		.4byte	.LASF11
+ 363 0086 04       		.byte	0x4
+ 364 0087 9201     		.2byte	0x192
+ 365 0089 2C000000 		.4byte	0x2c
+ 366 008d 05       		.uleb128 0x5
+ 367 008e FD000000 		.4byte	.LASF12
+ 368 0092 04       		.byte	0x4
+ 369 0093 9401     		.2byte	0x194
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 9
+
+
+ 370 0095 53000000 		.4byte	0x53
+ 371 0099 02       		.uleb128 0x2
+ 372 009a 04       		.byte	0x4
+ 373 009b 04       		.byte	0x4
+ 374 009c 4F000000 		.4byte	.LASF13
+ 375 00a0 02       		.uleb128 0x2
+ 376 00a1 08       		.byte	0x8
+ 377 00a2 04       		.byte	0x4
+ 378 00a3 D7000000 		.4byte	.LASF14
+ 379 00a7 02       		.uleb128 0x2
+ 380 00a8 01       		.byte	0x1
+ 381 00a9 08       		.byte	0x8
+ 382 00aa 18020000 		.4byte	.LASF15
+ 383 00ae 02       		.uleb128 0x2
+ 384 00af 04       		.byte	0x4
+ 385 00b0 07       		.byte	0x7
+ 386 00b1 01020000 		.4byte	.LASF16
+ 387 00b5 06       		.uleb128 0x6
+ 388 00b6 BE010000 		.4byte	.LASF17
+ 389 00ba 01       		.byte	0x1
+ 390 00bb 0D       		.byte	0xd
+ 391 00bc 00000000 		.4byte	.LFB63
+ 392 00c0 08000000 		.4byte	.LFE63-.LFB63
+ 393 00c4 01       		.uleb128 0x1
+ 394 00c5 9C       		.byte	0x9c
+ 395 00c6 D4000000 		.4byte	0xd4
+ 396 00ca 07       		.uleb128 0x7
+ 397 00cb 06000000 		.4byte	.LVL0
+ 398 00cf DA030000 		.4byte	0x3da
+ 399 00d3 00       		.byte	0
+ 400 00d4 06       		.uleb128 0x6
+ 401 00d5 DE000000 		.4byte	.LASF18
+ 402 00d9 01       		.byte	0x1
+ 403 00da 17       		.byte	0x17
+ 404 00db 00000000 		.4byte	.LFB64
+ 405 00df 08000000 		.4byte	.LFE64-.LFB64
+ 406 00e3 01       		.uleb128 0x1
+ 407 00e4 9C       		.byte	0x9c
+ 408 00e5 F3000000 		.4byte	0xf3
+ 409 00e9 07       		.uleb128 0x7
+ 410 00ea 06000000 		.4byte	.LVL1
+ 411 00ee E1030000 		.4byte	0x3e1
+ 412 00f2 00       		.byte	0
+ 413 00f3 08       		.uleb128 0x8
+ 414 00f4 C9000000 		.4byte	.LASF21
+ 415 00f8 01       		.byte	0x1
+ 416 00f9 23       		.byte	0x23
+ 417 00fa 00000000 		.4byte	.LFB65
+ 418 00fe 26000000 		.4byte	.LFE65-.LFB65
+ 419 0102 01       		.uleb128 0x1
+ 420 0103 9C       		.byte	0x9c
+ 421 0104 85010000 		.4byte	0x185
+ 422 0108 09       		.uleb128 0x9
+ 423 0109 FB010000 		.4byte	.LASF19
+ 424 010d 01       		.byte	0x1
+ 425 010e 23       		.byte	0x23
+ 426 010f 81000000 		.4byte	0x81
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 10
+
+
+ 427 0113 00000000 		.4byte	.LLST0
+ 428 0117 09       		.uleb128 0x9
+ 429 0118 55000000 		.4byte	.LASF20
+ 430 011c 01       		.byte	0x1
+ 431 011d 23       		.byte	0x23
+ 432 011e 8D000000 		.4byte	0x8d
+ 433 0122 21000000 		.4byte	.LLST1
+ 434 0126 0A       		.uleb128 0xa
+ 435 0127 0C000000 		.4byte	.LVL4
+ 436 012b E8030000 		.4byte	0x3e8
+ 437 012f 39010000 		.4byte	0x139
+ 438 0133 0B       		.uleb128 0xb
+ 439 0134 01       		.uleb128 0x1
+ 440 0135 50       		.byte	0x50
+ 441 0136 01       		.uleb128 0x1
+ 442 0137 30       		.byte	0x30
+ 443 0138 00       		.byte	0
+ 444 0139 0A       		.uleb128 0xa
+ 445 013a 12000000 		.4byte	.LVL5
+ 446 013e F9030000 		.4byte	0x3f9
+ 447 0142 4C010000 		.4byte	0x14c
+ 448 0146 0B       		.uleb128 0xb
+ 449 0147 01       		.uleb128 0x1
+ 450 0148 50       		.byte	0x50
+ 451 0149 01       		.uleb128 0x1
+ 452 014a 30       		.byte	0x30
+ 453 014b 00       		.byte	0
+ 454 014c 0A       		.uleb128 0xa
+ 455 014d 18000000 		.4byte	.LVL6
+ 456 0151 0A040000 		.4byte	0x40a
+ 457 0155 60010000 		.4byte	0x160
+ 458 0159 0B       		.uleb128 0xb
+ 459 015a 01       		.uleb128 0x1
+ 460 015b 50       		.byte	0x50
+ 461 015c 02       		.uleb128 0x2
+ 462 015d 74       		.byte	0x74
+ 463 015e 00       		.sleb128 0
+ 464 015f 00       		.byte	0
+ 465 0160 0A       		.uleb128 0xa
+ 466 0161 1E000000 		.4byte	.LVL7
+ 467 0165 1B040000 		.4byte	0x41b
+ 468 0169 74010000 		.4byte	0x174
+ 469 016d 0B       		.uleb128 0xb
+ 470 016e 01       		.uleb128 0x1
+ 471 016f 50       		.byte	0x50
+ 472 0170 02       		.uleb128 0x2
+ 473 0171 74       		.byte	0x74
+ 474 0172 00       		.sleb128 0
+ 475 0173 00       		.byte	0
+ 476 0174 0C       		.uleb128 0xc
+ 477 0175 24000000 		.4byte	.LVL8
+ 478 0179 2C040000 		.4byte	0x42c
+ 479 017d 0B       		.uleb128 0xb
+ 480 017e 01       		.uleb128 0x1
+ 481 017f 50       		.byte	0x50
+ 482 0180 02       		.uleb128 0x2
+ 483 0181 75       		.byte	0x75
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 11
+
+
+ 484 0182 00       		.sleb128 0
+ 485 0183 00       		.byte	0
+ 486 0184 00       		.byte	0
+ 487 0185 08       		.uleb128 0x8
+ 488 0186 1D020000 		.4byte	.LASF22
+ 489 018a 01       		.byte	0x1
+ 490 018b 2B       		.byte	0x2b
+ 491 018c 00000000 		.4byte	.LFB66
+ 492 0190 28000000 		.4byte	.LFE66-.LFB66
+ 493 0194 01       		.uleb128 0x1
+ 494 0195 9C       		.byte	0x9c
+ 495 0196 26020000 		.4byte	0x226
+ 496 019a 09       		.uleb128 0x9
+ 497 019b 9F010000 		.4byte	.LASF23
+ 498 019f 01       		.byte	0x1
+ 499 01a0 2B       		.byte	0x2b
+ 500 01a1 81000000 		.4byte	0x81
+ 501 01a5 3F000000 		.4byte	.LLST2
+ 502 01a9 09       		.uleb128 0x9
+ 503 01aa 25000000 		.4byte	.LASF24
+ 504 01ae 01       		.byte	0x1
+ 505 01af 2B       		.byte	0x2b
+ 506 01b0 81000000 		.4byte	0x81
+ 507 01b4 60000000 		.4byte	.LLST3
+ 508 01b8 09       		.uleb128 0x9
+ 509 01b9 55000000 		.4byte	.LASF20
+ 510 01bd 01       		.byte	0x1
+ 511 01be 2B       		.byte	0x2b
+ 512 01bf 8D000000 		.4byte	0x8d
+ 513 01c3 81000000 		.4byte	.LLST4
+ 514 01c7 0A       		.uleb128 0xa
+ 515 01c8 0E000000 		.4byte	.LVL11
+ 516 01cc E8030000 		.4byte	0x3e8
+ 517 01d0 DA010000 		.4byte	0x1da
+ 518 01d4 0B       		.uleb128 0xb
+ 519 01d5 01       		.uleb128 0x1
+ 520 01d6 50       		.byte	0x50
+ 521 01d7 01       		.uleb128 0x1
+ 522 01d8 30       		.byte	0x30
+ 523 01d9 00       		.byte	0
+ 524 01da 0A       		.uleb128 0xa
+ 525 01db 14000000 		.4byte	.LVL12
+ 526 01df F9030000 		.4byte	0x3f9
+ 527 01e3 ED010000 		.4byte	0x1ed
+ 528 01e7 0B       		.uleb128 0xb
+ 529 01e8 01       		.uleb128 0x1
+ 530 01e9 50       		.byte	0x50
+ 531 01ea 01       		.uleb128 0x1
+ 532 01eb 31       		.byte	0x31
+ 533 01ec 00       		.byte	0
+ 534 01ed 0A       		.uleb128 0xa
+ 535 01ee 1A000000 		.4byte	.LVL13
+ 536 01f2 0A040000 		.4byte	0x40a
+ 537 01f6 01020000 		.4byte	0x201
+ 538 01fa 0B       		.uleb128 0xb
+ 539 01fb 01       		.uleb128 0x1
+ 540 01fc 50       		.byte	0x50
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 12
+
+
+ 541 01fd 02       		.uleb128 0x2
+ 542 01fe 76       		.byte	0x76
+ 543 01ff 00       		.sleb128 0
+ 544 0200 00       		.byte	0
+ 545 0201 0A       		.uleb128 0xa
+ 546 0202 20000000 		.4byte	.LVL14
+ 547 0206 1B040000 		.4byte	0x41b
+ 548 020a 15020000 		.4byte	0x215
+ 549 020e 0B       		.uleb128 0xb
+ 550 020f 01       		.uleb128 0x1
+ 551 0210 50       		.byte	0x50
+ 552 0211 02       		.uleb128 0x2
+ 553 0212 75       		.byte	0x75
+ 554 0213 00       		.sleb128 0
+ 555 0214 00       		.byte	0
+ 556 0215 0C       		.uleb128 0xc
+ 557 0216 26000000 		.4byte	.LVL15
+ 558 021a 2C040000 		.4byte	0x42c
+ 559 021e 0B       		.uleb128 0xb
+ 560 021f 01       		.uleb128 0x1
+ 561 0220 50       		.byte	0x50
+ 562 0221 02       		.uleb128 0x2
+ 563 0222 74       		.byte	0x74
+ 564 0223 00       		.sleb128 0
+ 565 0224 00       		.byte	0
+ 566 0225 00       		.byte	0
+ 567 0226 08       		.uleb128 0x8
+ 568 0227 EE010000 		.4byte	.LASF25
+ 569 022b 01       		.byte	0x1
+ 570 022c 33       		.byte	0x33
+ 571 022d 00000000 		.4byte	.LFB67
+ 572 0231 28000000 		.4byte	.LFE67-.LFB67
+ 573 0235 01       		.uleb128 0x1
+ 574 0236 9C       		.byte	0x9c
+ 575 0237 C7020000 		.4byte	0x2c7
+ 576 023b 09       		.uleb128 0x9
+ 577 023c 9F010000 		.4byte	.LASF23
+ 578 0240 01       		.byte	0x1
+ 579 0241 33       		.byte	0x33
+ 580 0242 81000000 		.4byte	0x81
+ 581 0246 9F000000 		.4byte	.LLST5
+ 582 024a 09       		.uleb128 0x9
+ 583 024b 25000000 		.4byte	.LASF24
+ 584 024f 01       		.byte	0x1
+ 585 0250 33       		.byte	0x33
+ 586 0251 81000000 		.4byte	0x81
+ 587 0255 C0000000 		.4byte	.LLST6
+ 588 0259 09       		.uleb128 0x9
+ 589 025a 55000000 		.4byte	.LASF20
+ 590 025e 01       		.byte	0x1
+ 591 025f 33       		.byte	0x33
+ 592 0260 8D000000 		.4byte	0x8d
+ 593 0264 E1000000 		.4byte	.LLST7
+ 594 0268 0A       		.uleb128 0xa
+ 595 0269 0E000000 		.4byte	.LVL18
+ 596 026d E8030000 		.4byte	0x3e8
+ 597 0271 7B020000 		.4byte	0x27b
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 13
+
+
+ 598 0275 0B       		.uleb128 0xb
+ 599 0276 01       		.uleb128 0x1
+ 600 0277 50       		.byte	0x50
+ 601 0278 01       		.uleb128 0x1
+ 602 0279 31       		.byte	0x31
+ 603 027a 00       		.byte	0
+ 604 027b 0A       		.uleb128 0xa
+ 605 027c 14000000 		.4byte	.LVL19
+ 606 0280 F9030000 		.4byte	0x3f9
+ 607 0284 8E020000 		.4byte	0x28e
+ 608 0288 0B       		.uleb128 0xb
+ 609 0289 01       		.uleb128 0x1
+ 610 028a 50       		.byte	0x50
+ 611 028b 01       		.uleb128 0x1
+ 612 028c 30       		.byte	0x30
+ 613 028d 00       		.byte	0
+ 614 028e 0A       		.uleb128 0xa
+ 615 028f 1A000000 		.4byte	.LVL20
+ 616 0293 0A040000 		.4byte	0x40a
+ 617 0297 A2020000 		.4byte	0x2a2
+ 618 029b 0B       		.uleb128 0xb
+ 619 029c 01       		.uleb128 0x1
+ 620 029d 50       		.byte	0x50
+ 621 029e 02       		.uleb128 0x2
+ 622 029f 76       		.byte	0x76
+ 623 02a0 00       		.sleb128 0
+ 624 02a1 00       		.byte	0
+ 625 02a2 0A       		.uleb128 0xa
+ 626 02a3 20000000 		.4byte	.LVL21
+ 627 02a7 1B040000 		.4byte	0x41b
+ 628 02ab B6020000 		.4byte	0x2b6
+ 629 02af 0B       		.uleb128 0xb
+ 630 02b0 01       		.uleb128 0x1
+ 631 02b1 50       		.byte	0x50
+ 632 02b2 02       		.uleb128 0x2
+ 633 02b3 75       		.byte	0x75
+ 634 02b4 00       		.sleb128 0
+ 635 02b5 00       		.byte	0
+ 636 02b6 0C       		.uleb128 0xc
+ 637 02b7 26000000 		.4byte	.LVL22
+ 638 02bb 2C040000 		.4byte	0x42c
+ 639 02bf 0B       		.uleb128 0xb
+ 640 02c0 01       		.uleb128 0x1
+ 641 02c1 50       		.byte	0x50
+ 642 02c2 02       		.uleb128 0x2
+ 643 02c3 74       		.byte	0x74
+ 644 02c4 00       		.sleb128 0
+ 645 02c5 00       		.byte	0
+ 646 02c6 00       		.byte	0
+ 647 02c7 08       		.uleb128 0x8
+ 648 02c8 50020000 		.4byte	.LASF26
+ 649 02cc 01       		.byte	0x1
+ 650 02cd 43       		.byte	0x43
+ 651 02ce 00000000 		.4byte	.LFB68
+ 652 02d2 18000000 		.4byte	.LFE68-.LFB68
+ 653 02d6 01       		.uleb128 0x1
+ 654 02d7 9C       		.byte	0x9c
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 14
+
+
+ 655 02d8 37030000 		.4byte	0x337
+ 656 02dc 09       		.uleb128 0x9
+ 657 02dd 9F010000 		.4byte	.LASF23
+ 658 02e1 01       		.byte	0x1
+ 659 02e2 43       		.byte	0x43
+ 660 02e3 81000000 		.4byte	0x81
+ 661 02e7 FF000000 		.4byte	.LLST8
+ 662 02eb 09       		.uleb128 0x9
+ 663 02ec 25000000 		.4byte	.LASF24
+ 664 02f0 01       		.byte	0x1
+ 665 02f1 43       		.byte	0x43
+ 666 02f2 81000000 		.4byte	0x81
+ 667 02f6 20010000 		.4byte	.LLST9
+ 668 02fa 09       		.uleb128 0x9
+ 669 02fb 55000000 		.4byte	.LASF20
+ 670 02ff 01       		.byte	0x1
+ 671 0300 43       		.byte	0x43
+ 672 0301 8D000000 		.4byte	0x8d
+ 673 0305 41010000 		.4byte	.LLST10
+ 674 0309 07       		.uleb128 0x7
+ 675 030a 0A000000 		.4byte	.LVL24
+ 676 030e 0A040000 		.4byte	0x40a
+ 677 0312 0A       		.uleb128 0xa
+ 678 0313 10000000 		.4byte	.LVL25
+ 679 0317 1B040000 		.4byte	0x41b
+ 680 031b 26030000 		.4byte	0x326
+ 681 031f 0B       		.uleb128 0xb
+ 682 0320 01       		.uleb128 0x1
+ 683 0321 50       		.byte	0x50
+ 684 0322 02       		.uleb128 0x2
+ 685 0323 75       		.byte	0x75
+ 686 0324 00       		.sleb128 0
+ 687 0325 00       		.byte	0
+ 688 0326 0C       		.uleb128 0xc
+ 689 0327 16000000 		.4byte	.LVL26
+ 690 032b 2C040000 		.4byte	0x42c
+ 691 032f 0B       		.uleb128 0xb
+ 692 0330 01       		.uleb128 0x1
+ 693 0331 50       		.byte	0x50
+ 694 0332 02       		.uleb128 0x2
+ 695 0333 74       		.byte	0x74
+ 696 0334 00       		.sleb128 0
+ 697 0335 00       		.byte	0
+ 698 0336 00       		.byte	0
+ 699 0337 08       		.uleb128 0x8
+ 700 0338 16000000 		.4byte	.LASF27
+ 701 033c 01       		.byte	0x1
+ 702 033d 51       		.byte	0x51
+ 703 033e 00000000 		.4byte	.LFB69
+ 704 0342 26000000 		.4byte	.LFE69-.LFB69
+ 705 0346 01       		.uleb128 0x1
+ 706 0347 9C       		.byte	0x9c
+ 707 0348 C9030000 		.4byte	0x3c9
+ 708 034c 09       		.uleb128 0x9
+ 709 034d FB010000 		.4byte	.LASF19
+ 710 0351 01       		.byte	0x1
+ 711 0352 51       		.byte	0x51
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 15
+
+
+ 712 0353 81000000 		.4byte	0x81
+ 713 0357 5F010000 		.4byte	.LLST11
+ 714 035b 09       		.uleb128 0x9
+ 715 035c 55000000 		.4byte	.LASF20
+ 716 0360 01       		.byte	0x1
+ 717 0361 51       		.byte	0x51
+ 718 0362 8D000000 		.4byte	0x8d
+ 719 0366 80010000 		.4byte	.LLST12
+ 720 036a 0A       		.uleb128 0xa
+ 721 036b 0C000000 		.4byte	.LVL29
+ 722 036f E8030000 		.4byte	0x3e8
+ 723 0373 7D030000 		.4byte	0x37d
+ 724 0377 0B       		.uleb128 0xb
+ 725 0378 01       		.uleb128 0x1
+ 726 0379 50       		.byte	0x50
+ 727 037a 01       		.uleb128 0x1
+ 728 037b 31       		.byte	0x31
+ 729 037c 00       		.byte	0
+ 730 037d 0A       		.uleb128 0xa
+ 731 037e 12000000 		.4byte	.LVL30
+ 732 0382 F9030000 		.4byte	0x3f9
+ 733 0386 90030000 		.4byte	0x390
+ 734 038a 0B       		.uleb128 0xb
+ 735 038b 01       		.uleb128 0x1
+ 736 038c 50       		.byte	0x50
+ 737 038d 01       		.uleb128 0x1
+ 738 038e 31       		.byte	0x31
+ 739 038f 00       		.byte	0
+ 740 0390 0A       		.uleb128 0xa
+ 741 0391 18000000 		.4byte	.LVL31
+ 742 0395 0A040000 		.4byte	0x40a
+ 743 0399 A4030000 		.4byte	0x3a4
+ 744 039d 0B       		.uleb128 0xb
+ 745 039e 01       		.uleb128 0x1
+ 746 039f 50       		.byte	0x50
+ 747 03a0 02       		.uleb128 0x2
+ 748 03a1 74       		.byte	0x74
+ 749 03a2 00       		.sleb128 0
+ 750 03a3 00       		.byte	0
+ 751 03a4 0A       		.uleb128 0xa
+ 752 03a5 1E000000 		.4byte	.LVL32
+ 753 03a9 1B040000 		.4byte	0x41b
+ 754 03ad B8030000 		.4byte	0x3b8
+ 755 03b1 0B       		.uleb128 0xb
+ 756 03b2 01       		.uleb128 0x1
+ 757 03b3 50       		.byte	0x50
+ 758 03b4 02       		.uleb128 0x2
+ 759 03b5 74       		.byte	0x74
+ 760 03b6 00       		.sleb128 0
+ 761 03b7 00       		.byte	0
+ 762 03b8 0C       		.uleb128 0xc
+ 763 03b9 24000000 		.4byte	.LVL33
+ 764 03bd 2C040000 		.4byte	0x42c
+ 765 03c1 0B       		.uleb128 0xb
+ 766 03c2 01       		.uleb128 0x1
+ 767 03c3 50       		.byte	0x50
+ 768 03c4 02       		.uleb128 0x2
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 16
+
+
+ 769 03c5 75       		.byte	0x75
+ 770 03c6 00       		.sleb128 0
+ 771 03c7 00       		.byte	0
+ 772 03c8 00       		.byte	0
+ 773 03c9 0D       		.uleb128 0xd
+ 774 03ca BC000000 		.4byte	.LASF37
+ 775 03ce 08       		.byte	0x8
+ 776 03cf 9606     		.2byte	0x696
+ 777 03d1 D5030000 		.4byte	0x3d5
+ 778 03d5 0E       		.uleb128 0xe
+ 779 03d6 76000000 		.4byte	0x76
+ 780 03da 0F       		.uleb128 0xf
+ 781 03db 34020000 		.4byte	.LASF28
+ 782 03df 05       		.byte	0x5
+ 783 03e0 92       		.byte	0x92
+ 784 03e1 0F       		.uleb128 0xf
+ 785 03e2 3E020000 		.4byte	.LASF29
+ 786 03e6 05       		.byte	0x5
+ 787 03e7 93       		.byte	0x93
+ 788 03e8 10       		.uleb128 0x10
+ 789 03e9 7B000000 		.4byte	.LASF30
+ 790 03ed 06       		.byte	0x6
+ 791 03ee 26       		.byte	0x26
+ 792 03ef F9030000 		.4byte	0x3f9
+ 793 03f3 11       		.uleb128 0x11
+ 794 03f4 81000000 		.4byte	0x81
+ 795 03f8 00       		.byte	0
+ 796 03f9 10       		.uleb128 0x10
+ 797 03fa 2D000000 		.4byte	.LASF31
+ 798 03fe 07       		.byte	0x7
+ 799 03ff 26       		.byte	0x26
+ 800 0400 0A040000 		.4byte	0x40a
+ 801 0404 11       		.uleb128 0x11
+ 802 0405 81000000 		.4byte	0x81
+ 803 0409 00       		.byte	0
+ 804 040a 10       		.uleb128 0x10
+ 805 040b CA010000 		.4byte	.LASF32
+ 806 040f 05       		.byte	0x5
+ 807 0410 C7       		.byte	0xc7
+ 808 0411 1B040000 		.4byte	0x41b
+ 809 0415 11       		.uleb128 0x11
+ 810 0416 81000000 		.4byte	0x81
+ 811 041a 00       		.byte	0
+ 812 041b 10       		.uleb128 0x10
+ 813 041c DC010000 		.4byte	.LASF33
+ 814 0420 05       		.byte	0x5
+ 815 0421 CA       		.byte	0xca
+ 816 0422 2C040000 		.4byte	0x42c
+ 817 0426 11       		.uleb128 0x11
+ 818 0427 81000000 		.4byte	0x81
+ 819 042b 00       		.byte	0
+ 820 042c 12       		.uleb128 0x12
+ 821 042d 6E020000 		.4byte	.LASF38
+ 822 0431 09       		.byte	0x9
+ 823 0432 76       		.byte	0x76
+ 824 0433 11       		.uleb128 0x11
+ 825 0434 8D000000 		.4byte	0x8d
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 17
+
+
+ 826 0438 00       		.byte	0
+ 827 0439 00       		.byte	0
+ 828              		.section	.debug_abbrev,"",%progbits
+ 829              	.Ldebug_abbrev0:
+ 830 0000 01       		.uleb128 0x1
+ 831 0001 11       		.uleb128 0x11
+ 832 0002 01       		.byte	0x1
+ 833 0003 25       		.uleb128 0x25
+ 834 0004 0E       		.uleb128 0xe
+ 835 0005 13       		.uleb128 0x13
+ 836 0006 0B       		.uleb128 0xb
+ 837 0007 03       		.uleb128 0x3
+ 838 0008 0E       		.uleb128 0xe
+ 839 0009 1B       		.uleb128 0x1b
+ 840 000a 0E       		.uleb128 0xe
+ 841 000b 55       		.uleb128 0x55
+ 842 000c 17       		.uleb128 0x17
+ 843 000d 11       		.uleb128 0x11
+ 844 000e 01       		.uleb128 0x1
+ 845 000f 10       		.uleb128 0x10
+ 846 0010 17       		.uleb128 0x17
+ 847 0011 00       		.byte	0
+ 848 0012 00       		.byte	0
+ 849 0013 02       		.uleb128 0x2
+ 850 0014 24       		.uleb128 0x24
+ 851 0015 00       		.byte	0
+ 852 0016 0B       		.uleb128 0xb
+ 853 0017 0B       		.uleb128 0xb
+ 854 0018 3E       		.uleb128 0x3e
+ 855 0019 0B       		.uleb128 0xb
+ 856 001a 03       		.uleb128 0x3
+ 857 001b 0E       		.uleb128 0xe
+ 858 001c 00       		.byte	0
+ 859 001d 00       		.byte	0
+ 860 001e 03       		.uleb128 0x3
+ 861 001f 16       		.uleb128 0x16
+ 862 0020 00       		.byte	0
+ 863 0021 03       		.uleb128 0x3
+ 864 0022 0E       		.uleb128 0xe
+ 865 0023 3A       		.uleb128 0x3a
+ 866 0024 0B       		.uleb128 0xb
+ 867 0025 3B       		.uleb128 0x3b
+ 868 0026 0B       		.uleb128 0xb
+ 869 0027 49       		.uleb128 0x49
+ 870 0028 13       		.uleb128 0x13
+ 871 0029 00       		.byte	0
+ 872 002a 00       		.byte	0
+ 873 002b 04       		.uleb128 0x4
+ 874 002c 24       		.uleb128 0x24
+ 875 002d 00       		.byte	0
+ 876 002e 0B       		.uleb128 0xb
+ 877 002f 0B       		.uleb128 0xb
+ 878 0030 3E       		.uleb128 0x3e
+ 879 0031 0B       		.uleb128 0xb
+ 880 0032 03       		.uleb128 0x3
+ 881 0033 08       		.uleb128 0x8
+ 882 0034 00       		.byte	0
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 18
+
+
+ 883 0035 00       		.byte	0
+ 884 0036 05       		.uleb128 0x5
+ 885 0037 16       		.uleb128 0x16
+ 886 0038 00       		.byte	0
+ 887 0039 03       		.uleb128 0x3
+ 888 003a 0E       		.uleb128 0xe
+ 889 003b 3A       		.uleb128 0x3a
+ 890 003c 0B       		.uleb128 0xb
+ 891 003d 3B       		.uleb128 0x3b
+ 892 003e 05       		.uleb128 0x5
+ 893 003f 49       		.uleb128 0x49
+ 894 0040 13       		.uleb128 0x13
+ 895 0041 00       		.byte	0
+ 896 0042 00       		.byte	0
+ 897 0043 06       		.uleb128 0x6
+ 898 0044 2E       		.uleb128 0x2e
+ 899 0045 01       		.byte	0x1
+ 900 0046 3F       		.uleb128 0x3f
+ 901 0047 19       		.uleb128 0x19
+ 902 0048 03       		.uleb128 0x3
+ 903 0049 0E       		.uleb128 0xe
+ 904 004a 3A       		.uleb128 0x3a
+ 905 004b 0B       		.uleb128 0xb
+ 906 004c 3B       		.uleb128 0x3b
+ 907 004d 0B       		.uleb128 0xb
+ 908 004e 11       		.uleb128 0x11
+ 909 004f 01       		.uleb128 0x1
+ 910 0050 12       		.uleb128 0x12
+ 911 0051 06       		.uleb128 0x6
+ 912 0052 40       		.uleb128 0x40
+ 913 0053 18       		.uleb128 0x18
+ 914 0054 9742     		.uleb128 0x2117
+ 915 0056 19       		.uleb128 0x19
+ 916 0057 01       		.uleb128 0x1
+ 917 0058 13       		.uleb128 0x13
+ 918 0059 00       		.byte	0
+ 919 005a 00       		.byte	0
+ 920 005b 07       		.uleb128 0x7
+ 921 005c 898201   		.uleb128 0x4109
+ 922 005f 00       		.byte	0
+ 923 0060 11       		.uleb128 0x11
+ 924 0061 01       		.uleb128 0x1
+ 925 0062 31       		.uleb128 0x31
+ 926 0063 13       		.uleb128 0x13
+ 927 0064 00       		.byte	0
+ 928 0065 00       		.byte	0
+ 929 0066 08       		.uleb128 0x8
+ 930 0067 2E       		.uleb128 0x2e
+ 931 0068 01       		.byte	0x1
+ 932 0069 3F       		.uleb128 0x3f
+ 933 006a 19       		.uleb128 0x19
+ 934 006b 03       		.uleb128 0x3
+ 935 006c 0E       		.uleb128 0xe
+ 936 006d 3A       		.uleb128 0x3a
+ 937 006e 0B       		.uleb128 0xb
+ 938 006f 3B       		.uleb128 0x3b
+ 939 0070 0B       		.uleb128 0xb
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 19
+
+
+ 940 0071 27       		.uleb128 0x27
+ 941 0072 19       		.uleb128 0x19
+ 942 0073 11       		.uleb128 0x11
+ 943 0074 01       		.uleb128 0x1
+ 944 0075 12       		.uleb128 0x12
+ 945 0076 06       		.uleb128 0x6
+ 946 0077 40       		.uleb128 0x40
+ 947 0078 18       		.uleb128 0x18
+ 948 0079 9742     		.uleb128 0x2117
+ 949 007b 19       		.uleb128 0x19
+ 950 007c 01       		.uleb128 0x1
+ 951 007d 13       		.uleb128 0x13
+ 952 007e 00       		.byte	0
+ 953 007f 00       		.byte	0
+ 954 0080 09       		.uleb128 0x9
+ 955 0081 05       		.uleb128 0x5
+ 956 0082 00       		.byte	0
+ 957 0083 03       		.uleb128 0x3
+ 958 0084 0E       		.uleb128 0xe
+ 959 0085 3A       		.uleb128 0x3a
+ 960 0086 0B       		.uleb128 0xb
+ 961 0087 3B       		.uleb128 0x3b
+ 962 0088 0B       		.uleb128 0xb
+ 963 0089 49       		.uleb128 0x49
+ 964 008a 13       		.uleb128 0x13
+ 965 008b 02       		.uleb128 0x2
+ 966 008c 17       		.uleb128 0x17
+ 967 008d 00       		.byte	0
+ 968 008e 00       		.byte	0
+ 969 008f 0A       		.uleb128 0xa
+ 970 0090 898201   		.uleb128 0x4109
+ 971 0093 01       		.byte	0x1
+ 972 0094 11       		.uleb128 0x11
+ 973 0095 01       		.uleb128 0x1
+ 974 0096 31       		.uleb128 0x31
+ 975 0097 13       		.uleb128 0x13
+ 976 0098 01       		.uleb128 0x1
+ 977 0099 13       		.uleb128 0x13
+ 978 009a 00       		.byte	0
+ 979 009b 00       		.byte	0
+ 980 009c 0B       		.uleb128 0xb
+ 981 009d 8A8201   		.uleb128 0x410a
+ 982 00a0 00       		.byte	0
+ 983 00a1 02       		.uleb128 0x2
+ 984 00a2 18       		.uleb128 0x18
+ 985 00a3 9142     		.uleb128 0x2111
+ 986 00a5 18       		.uleb128 0x18
+ 987 00a6 00       		.byte	0
+ 988 00a7 00       		.byte	0
+ 989 00a8 0C       		.uleb128 0xc
+ 990 00a9 898201   		.uleb128 0x4109
+ 991 00ac 01       		.byte	0x1
+ 992 00ad 11       		.uleb128 0x11
+ 993 00ae 01       		.uleb128 0x1
+ 994 00af 31       		.uleb128 0x31
+ 995 00b0 13       		.uleb128 0x13
+ 996 00b1 00       		.byte	0
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 20
+
+
+ 997 00b2 00       		.byte	0
+ 998 00b3 0D       		.uleb128 0xd
+ 999 00b4 34       		.uleb128 0x34
+ 1000 00b5 00       		.byte	0
+ 1001 00b6 03       		.uleb128 0x3
+ 1002 00b7 0E       		.uleb128 0xe
+ 1003 00b8 3A       		.uleb128 0x3a
+ 1004 00b9 0B       		.uleb128 0xb
+ 1005 00ba 3B       		.uleb128 0x3b
+ 1006 00bb 05       		.uleb128 0x5
+ 1007 00bc 49       		.uleb128 0x49
+ 1008 00bd 13       		.uleb128 0x13
+ 1009 00be 3F       		.uleb128 0x3f
+ 1010 00bf 19       		.uleb128 0x19
+ 1011 00c0 3C       		.uleb128 0x3c
+ 1012 00c1 19       		.uleb128 0x19
+ 1013 00c2 00       		.byte	0
+ 1014 00c3 00       		.byte	0
+ 1015 00c4 0E       		.uleb128 0xe
+ 1016 00c5 35       		.uleb128 0x35
+ 1017 00c6 00       		.byte	0
+ 1018 00c7 49       		.uleb128 0x49
+ 1019 00c8 13       		.uleb128 0x13
+ 1020 00c9 00       		.byte	0
+ 1021 00ca 00       		.byte	0
+ 1022 00cb 0F       		.uleb128 0xf
+ 1023 00cc 2E       		.uleb128 0x2e
+ 1024 00cd 00       		.byte	0
+ 1025 00ce 3F       		.uleb128 0x3f
+ 1026 00cf 19       		.uleb128 0x19
+ 1027 00d0 03       		.uleb128 0x3
+ 1028 00d1 0E       		.uleb128 0xe
+ 1029 00d2 3A       		.uleb128 0x3a
+ 1030 00d3 0B       		.uleb128 0xb
+ 1031 00d4 3B       		.uleb128 0x3b
+ 1032 00d5 0B       		.uleb128 0xb
+ 1033 00d6 27       		.uleb128 0x27
+ 1034 00d7 19       		.uleb128 0x19
+ 1035 00d8 3C       		.uleb128 0x3c
+ 1036 00d9 19       		.uleb128 0x19
+ 1037 00da 00       		.byte	0
+ 1038 00db 00       		.byte	0
+ 1039 00dc 10       		.uleb128 0x10
+ 1040 00dd 2E       		.uleb128 0x2e
+ 1041 00de 01       		.byte	0x1
+ 1042 00df 3F       		.uleb128 0x3f
+ 1043 00e0 19       		.uleb128 0x19
+ 1044 00e1 03       		.uleb128 0x3
+ 1045 00e2 0E       		.uleb128 0xe
+ 1046 00e3 3A       		.uleb128 0x3a
+ 1047 00e4 0B       		.uleb128 0xb
+ 1048 00e5 3B       		.uleb128 0x3b
+ 1049 00e6 0B       		.uleb128 0xb
+ 1050 00e7 27       		.uleb128 0x27
+ 1051 00e8 19       		.uleb128 0x19
+ 1052 00e9 3C       		.uleb128 0x3c
+ 1053 00ea 19       		.uleb128 0x19
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 21
+
+
+ 1054 00eb 01       		.uleb128 0x1
+ 1055 00ec 13       		.uleb128 0x13
+ 1056 00ed 00       		.byte	0
+ 1057 00ee 00       		.byte	0
+ 1058 00ef 11       		.uleb128 0x11
+ 1059 00f0 05       		.uleb128 0x5
+ 1060 00f1 00       		.byte	0
+ 1061 00f2 49       		.uleb128 0x49
+ 1062 00f3 13       		.uleb128 0x13
+ 1063 00f4 00       		.byte	0
+ 1064 00f5 00       		.byte	0
+ 1065 00f6 12       		.uleb128 0x12
+ 1066 00f7 2E       		.uleb128 0x2e
+ 1067 00f8 01       		.byte	0x1
+ 1068 00f9 3F       		.uleb128 0x3f
+ 1069 00fa 19       		.uleb128 0x19
+ 1070 00fb 03       		.uleb128 0x3
+ 1071 00fc 0E       		.uleb128 0xe
+ 1072 00fd 3A       		.uleb128 0x3a
+ 1073 00fe 0B       		.uleb128 0xb
+ 1074 00ff 3B       		.uleb128 0x3b
+ 1075 0100 0B       		.uleb128 0xb
+ 1076 0101 27       		.uleb128 0x27
+ 1077 0102 19       		.uleb128 0x19
+ 1078 0103 3C       		.uleb128 0x3c
+ 1079 0104 19       		.uleb128 0x19
+ 1080 0105 00       		.byte	0
+ 1081 0106 00       		.byte	0
+ 1082 0107 00       		.byte	0
+ 1083              		.section	.debug_loc,"",%progbits
+ 1084              	.Ldebug_loc0:
+ 1085              	.LLST0:
+ 1086 0000 00000000 		.4byte	.LVL2
+ 1087 0004 08000000 		.4byte	.LVL3
+ 1088 0008 0100     		.2byte	0x1
+ 1089 000a 50       		.byte	0x50
+ 1090 000b 08000000 		.4byte	.LVL3
+ 1091 000f 26000000 		.4byte	.LFE65
+ 1092 0013 0400     		.2byte	0x4
+ 1093 0015 F3       		.byte	0xf3
+ 1094 0016 01       		.uleb128 0x1
+ 1095 0017 50       		.byte	0x50
+ 1096 0018 9F       		.byte	0x9f
+ 1097 0019 00000000 		.4byte	0
+ 1098 001d 00000000 		.4byte	0
+ 1099              	.LLST1:
+ 1100 0021 00000000 		.4byte	.LVL2
+ 1101 0025 0B000000 		.4byte	.LVL4-1
+ 1102 0029 0100     		.2byte	0x1
+ 1103 002b 51       		.byte	0x51
+ 1104 002c 0B000000 		.4byte	.LVL4-1
+ 1105 0030 26000000 		.4byte	.LFE65
+ 1106 0034 0100     		.2byte	0x1
+ 1107 0036 55       		.byte	0x55
+ 1108 0037 00000000 		.4byte	0
+ 1109 003b 00000000 		.4byte	0
+ 1110              	.LLST2:
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 22
+
+
+ 1111 003f 00000000 		.4byte	.LVL9
+ 1112 0043 0A000000 		.4byte	.LVL10
+ 1113 0047 0100     		.2byte	0x1
+ 1114 0049 50       		.byte	0x50
+ 1115 004a 0A000000 		.4byte	.LVL10
+ 1116 004e 28000000 		.4byte	.LFE66
+ 1117 0052 0400     		.2byte	0x4
+ 1118 0054 F3       		.byte	0xf3
+ 1119 0055 01       		.uleb128 0x1
+ 1120 0056 50       		.byte	0x50
+ 1121 0057 9F       		.byte	0x9f
+ 1122 0058 00000000 		.4byte	0
+ 1123 005c 00000000 		.4byte	0
+ 1124              	.LLST3:
+ 1125 0060 00000000 		.4byte	.LVL9
+ 1126 0064 0D000000 		.4byte	.LVL11-1
+ 1127 0068 0100     		.2byte	0x1
+ 1128 006a 51       		.byte	0x51
+ 1129 006b 0D000000 		.4byte	.LVL11-1
+ 1130 006f 28000000 		.4byte	.LFE66
+ 1131 0073 0400     		.2byte	0x4
+ 1132 0075 F3       		.byte	0xf3
+ 1133 0076 01       		.uleb128 0x1
+ 1134 0077 51       		.byte	0x51
+ 1135 0078 9F       		.byte	0x9f
+ 1136 0079 00000000 		.4byte	0
+ 1137 007d 00000000 		.4byte	0
+ 1138              	.LLST4:
+ 1139 0081 00000000 		.4byte	.LVL9
+ 1140 0085 0D000000 		.4byte	.LVL11-1
+ 1141 0089 0100     		.2byte	0x1
+ 1142 008b 52       		.byte	0x52
+ 1143 008c 0D000000 		.4byte	.LVL11-1
+ 1144 0090 28000000 		.4byte	.LFE66
+ 1145 0094 0100     		.2byte	0x1
+ 1146 0096 54       		.byte	0x54
+ 1147 0097 00000000 		.4byte	0
+ 1148 009b 00000000 		.4byte	0
+ 1149              	.LLST5:
+ 1150 009f 00000000 		.4byte	.LVL16
+ 1151 00a3 0A000000 		.4byte	.LVL17
+ 1152 00a7 0100     		.2byte	0x1
+ 1153 00a9 50       		.byte	0x50
+ 1154 00aa 0A000000 		.4byte	.LVL17
+ 1155 00ae 28000000 		.4byte	.LFE67
+ 1156 00b2 0400     		.2byte	0x4
+ 1157 00b4 F3       		.byte	0xf3
+ 1158 00b5 01       		.uleb128 0x1
+ 1159 00b6 50       		.byte	0x50
+ 1160 00b7 9F       		.byte	0x9f
+ 1161 00b8 00000000 		.4byte	0
+ 1162 00bc 00000000 		.4byte	0
+ 1163              	.LLST6:
+ 1164 00c0 00000000 		.4byte	.LVL16
+ 1165 00c4 0D000000 		.4byte	.LVL18-1
+ 1166 00c8 0100     		.2byte	0x1
+ 1167 00ca 51       		.byte	0x51
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 23
+
+
+ 1168 00cb 0D000000 		.4byte	.LVL18-1
+ 1169 00cf 28000000 		.4byte	.LFE67
+ 1170 00d3 0400     		.2byte	0x4
+ 1171 00d5 F3       		.byte	0xf3
+ 1172 00d6 01       		.uleb128 0x1
+ 1173 00d7 51       		.byte	0x51
+ 1174 00d8 9F       		.byte	0x9f
+ 1175 00d9 00000000 		.4byte	0
+ 1176 00dd 00000000 		.4byte	0
+ 1177              	.LLST7:
+ 1178 00e1 00000000 		.4byte	.LVL16
+ 1179 00e5 0D000000 		.4byte	.LVL18-1
+ 1180 00e9 0100     		.2byte	0x1
+ 1181 00eb 52       		.byte	0x52
+ 1182 00ec 0D000000 		.4byte	.LVL18-1
+ 1183 00f0 28000000 		.4byte	.LFE67
+ 1184 00f4 0100     		.2byte	0x1
+ 1185 00f6 54       		.byte	0x54
+ 1186 00f7 00000000 		.4byte	0
+ 1187 00fb 00000000 		.4byte	0
+ 1188              	.LLST8:
+ 1189 00ff 00000000 		.4byte	.LVL23
+ 1190 0103 09000000 		.4byte	.LVL24-1
+ 1191 0107 0100     		.2byte	0x1
+ 1192 0109 50       		.byte	0x50
+ 1193 010a 09000000 		.4byte	.LVL24-1
+ 1194 010e 18000000 		.4byte	.LFE68
+ 1195 0112 0400     		.2byte	0x4
+ 1196 0114 F3       		.byte	0xf3
+ 1197 0115 01       		.uleb128 0x1
+ 1198 0116 50       		.byte	0x50
+ 1199 0117 9F       		.byte	0x9f
+ 1200 0118 00000000 		.4byte	0
+ 1201 011c 00000000 		.4byte	0
+ 1202              	.LLST9:
+ 1203 0120 00000000 		.4byte	.LVL23
+ 1204 0124 09000000 		.4byte	.LVL24-1
+ 1205 0128 0100     		.2byte	0x1
+ 1206 012a 51       		.byte	0x51
+ 1207 012b 09000000 		.4byte	.LVL24-1
+ 1208 012f 18000000 		.4byte	.LFE68
+ 1209 0133 0400     		.2byte	0x4
+ 1210 0135 F3       		.byte	0xf3
+ 1211 0136 01       		.uleb128 0x1
+ 1212 0137 51       		.byte	0x51
+ 1213 0138 9F       		.byte	0x9f
+ 1214 0139 00000000 		.4byte	0
+ 1215 013d 00000000 		.4byte	0
+ 1216              	.LLST10:
+ 1217 0141 00000000 		.4byte	.LVL23
+ 1218 0145 09000000 		.4byte	.LVL24-1
+ 1219 0149 0100     		.2byte	0x1
+ 1220 014b 52       		.byte	0x52
+ 1221 014c 09000000 		.4byte	.LVL24-1
+ 1222 0150 18000000 		.4byte	.LFE68
+ 1223 0154 0100     		.2byte	0x1
+ 1224 0156 54       		.byte	0x54
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 24
+
+
+ 1225 0157 00000000 		.4byte	0
+ 1226 015b 00000000 		.4byte	0
+ 1227              	.LLST11:
+ 1228 015f 00000000 		.4byte	.LVL27
+ 1229 0163 08000000 		.4byte	.LVL28
+ 1230 0167 0100     		.2byte	0x1
+ 1231 0169 50       		.byte	0x50
+ 1232 016a 08000000 		.4byte	.LVL28
+ 1233 016e 26000000 		.4byte	.LFE69
+ 1234 0172 0400     		.2byte	0x4
+ 1235 0174 F3       		.byte	0xf3
+ 1236 0175 01       		.uleb128 0x1
+ 1237 0176 50       		.byte	0x50
+ 1238 0177 9F       		.byte	0x9f
+ 1239 0178 00000000 		.4byte	0
+ 1240 017c 00000000 		.4byte	0
+ 1241              	.LLST12:
+ 1242 0180 00000000 		.4byte	.LVL27
+ 1243 0184 0B000000 		.4byte	.LVL29-1
+ 1244 0188 0100     		.2byte	0x1
+ 1245 018a 51       		.byte	0x51
+ 1246 018b 0B000000 		.4byte	.LVL29-1
+ 1247 018f 26000000 		.4byte	.LFE69
+ 1248 0193 0100     		.2byte	0x1
+ 1249 0195 55       		.byte	0x55
+ 1250 0196 00000000 		.4byte	0
+ 1251 019a 00000000 		.4byte	0
+ 1252              		.section	.debug_aranges,"",%progbits
+ 1253 0000 4C000000 		.4byte	0x4c
+ 1254 0004 0200     		.2byte	0x2
+ 1255 0006 00000000 		.4byte	.Ldebug_info0
+ 1256 000a 04       		.byte	0x4
+ 1257 000b 00       		.byte	0
+ 1258 000c 0000     		.2byte	0
+ 1259 000e 0000     		.2byte	0
+ 1260 0010 00000000 		.4byte	.LFB63
+ 1261 0014 08000000 		.4byte	.LFE63-.LFB63
+ 1262 0018 00000000 		.4byte	.LFB64
+ 1263 001c 08000000 		.4byte	.LFE64-.LFB64
+ 1264 0020 00000000 		.4byte	.LFB65
+ 1265 0024 26000000 		.4byte	.LFE65-.LFB65
+ 1266 0028 00000000 		.4byte	.LFB66
+ 1267 002c 28000000 		.4byte	.LFE66-.LFB66
+ 1268 0030 00000000 		.4byte	.LFB67
+ 1269 0034 28000000 		.4byte	.LFE67-.LFB67
+ 1270 0038 00000000 		.4byte	.LFB68
+ 1271 003c 18000000 		.4byte	.LFE68-.LFB68
+ 1272 0040 00000000 		.4byte	.LFB69
+ 1273 0044 26000000 		.4byte	.LFE69-.LFB69
+ 1274 0048 00000000 		.4byte	0
+ 1275 004c 00000000 		.4byte	0
+ 1276              		.section	.debug_ranges,"",%progbits
+ 1277              	.Ldebug_ranges0:
+ 1278 0000 00000000 		.4byte	.LFB63
+ 1279 0004 08000000 		.4byte	.LFE63
+ 1280 0008 00000000 		.4byte	.LFB64
+ 1281 000c 08000000 		.4byte	.LFE64
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 25
+
+
+ 1282 0010 00000000 		.4byte	.LFB65
+ 1283 0014 26000000 		.4byte	.LFE65
+ 1284 0018 00000000 		.4byte	.LFB66
+ 1285 001c 28000000 		.4byte	.LFE66
+ 1286 0020 00000000 		.4byte	.LFB67
+ 1287 0024 28000000 		.4byte	.LFE67
+ 1288 0028 00000000 		.4byte	.LFB68
+ 1289 002c 18000000 		.4byte	.LFE68
+ 1290 0030 00000000 		.4byte	.LFB69
+ 1291 0034 26000000 		.4byte	.LFE69
+ 1292 0038 00000000 		.4byte	0
+ 1293 003c 00000000 		.4byte	0
+ 1294              		.section	.debug_line,"",%progbits
+ 1295              	.Ldebug_line0:
+ 1296 0000 17020000 		.section	.debug_str,"MS",%progbits,1
+ 1296      02008D01 
+ 1296      00000201 
+ 1296      FB0E0D00 
+ 1296      01010101 
+ 1297              	.LASF0:
+ 1298 0000 7369676E 		.ascii	"signed char\000"
+ 1298      65642063 
+ 1298      68617200 
+ 1299              	.LASF9:
+ 1300 000c 5F5F696E 		.ascii	"__int32_t\000"
+ 1300      7433325F 
+ 1300      7400
+ 1301              	.LASF27:
+ 1302 0016 6D6F746F 		.ascii	"motor_backward\000"
+ 1302      725F6261 
+ 1302      636B7761 
+ 1302      726400
+ 1303              	.LASF24:
+ 1304 0025 725F7370 		.ascii	"r_speed\000"
+ 1304      65656400 
+ 1305              	.LASF31:
+ 1306 002d 4D6F746F 		.ascii	"MotorDirRight_Write\000"
+ 1306      72446972 
+ 1306      52696768 
+ 1306      745F5772 
+ 1306      69746500 
+ 1307              	.LASF11:
+ 1308 0041 75696E74 		.ascii	"uint8\000"
+ 1308      3800
+ 1309              	.LASF10:
+ 1310 0047 696E7433 		.ascii	"int32_t\000"
+ 1310      325F7400 
+ 1311              	.LASF13:
+ 1312 004f 666C6F61 		.ascii	"float\000"
+ 1312      7400
+ 1313              	.LASF20:
+ 1314 0055 64656C61 		.ascii	"delay\000"
+ 1314      7900
+ 1315              	.LASF1:
+ 1316 005b 756E7369 		.ascii	"unsigned char\000"
+ 1316      676E6564 
+ 1316      20636861 
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 26
+
+
+ 1316      7200
+ 1317              	.LASF5:
+ 1318 0069 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1318      20756E73 
+ 1318      69676E65 
+ 1318      6420696E 
+ 1318      7400
+ 1319              	.LASF30:
+ 1320 007b 4D6F746F 		.ascii	"MotorDirLeft_Write\000"
+ 1320      72446972 
+ 1320      4C656674 
+ 1320      5F577269 
+ 1320      746500
+ 1321              	.LASF36:
+ 1322 008e 433A5C55 		.ascii	"C:\\Users\\austi\\Documents\\Zumo01\\ZumoBot.cydsn\000"
+ 1322      73657273 
+ 1322      5C617573 
+ 1322      74695C44 
+ 1322      6F63756D 
+ 1323              	.LASF37:
+ 1324 00bc 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1324      52784275 
+ 1324      66666572 
+ 1324      00
+ 1325              	.LASF21:
+ 1326 00c9 6D6F746F 		.ascii	"motor_forward\000"
+ 1326      725F666F 
+ 1326      72776172 
+ 1326      6400
+ 1327              	.LASF14:
+ 1328 00d7 646F7562 		.ascii	"double\000"
+ 1328      6C6500
+ 1329              	.LASF18:
+ 1330 00de 6D6F746F 		.ascii	"motor_stop\000"
+ 1330      725F7374 
+ 1330      6F7000
+ 1331              	.LASF35:
+ 1332 00e9 5A756D6F 		.ascii	"ZumoLibrary\\Motor.c\000"
+ 1332      4C696272 
+ 1332      6172795C 
+ 1332      4D6F746F 
+ 1332      722E6300 
+ 1333              	.LASF12:
+ 1334 00fd 75696E74 		.ascii	"uint32\000"
+ 1334      333200
+ 1335              	.LASF34:
+ 1336 0104 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1336      4320342E 
+ 1336      392E3320 
+ 1336      32303135 
+ 1336      30333033 
+ 1337 0137 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1337      20726576 
+ 1337      6973696F 
+ 1337      6E203232 
+ 1337      31323230 
+ 1338 016a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 27
+
+
+ 1338      66756E63 
+ 1338      74696F6E 
+ 1338      2D736563 
+ 1338      74696F6E 
+ 1339              	.LASF8:
+ 1340 0192 756E7369 		.ascii	"unsigned int\000"
+ 1340      676E6564 
+ 1340      20696E74 
+ 1340      00
+ 1341              	.LASF23:
+ 1342 019f 6C5F7370 		.ascii	"l_speed\000"
+ 1342      65656400 
+ 1343              	.LASF7:
+ 1344 01a7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1344      206C6F6E 
+ 1344      6720756E 
+ 1344      7369676E 
+ 1344      65642069 
+ 1345              	.LASF17:
+ 1346 01be 6D6F746F 		.ascii	"motor_start\000"
+ 1346      725F7374 
+ 1346      61727400 
+ 1347              	.LASF32:
+ 1348 01ca 50574D5F 		.ascii	"PWM_WriteCompare1\000"
+ 1348      57726974 
+ 1348      65436F6D 
+ 1348      70617265 
+ 1348      3100
+ 1349              	.LASF33:
+ 1350 01dc 50574D5F 		.ascii	"PWM_WriteCompare2\000"
+ 1350      57726974 
+ 1350      65436F6D 
+ 1350      70617265 
+ 1350      3200
+ 1351              	.LASF25:
+ 1352 01ee 706C6D6F 		.ascii	"plmotor_turn\000"
+ 1352      746F725F 
+ 1352      7475726E 
+ 1352      00
+ 1353              	.LASF19:
+ 1354 01fb 73706565 		.ascii	"speed\000"
+ 1354      6400
+ 1355              	.LASF16:
+ 1356 0201 73697A65 		.ascii	"sizetype\000"
+ 1356      74797065 
+ 1356      00
+ 1357              	.LASF6:
+ 1358 020a 6C6F6E67 		.ascii	"long long int\000"
+ 1358      206C6F6E 
+ 1358      6720696E 
+ 1358      7400
+ 1359              	.LASF15:
+ 1360 0218 63686172 		.ascii	"char\000"
+ 1360      00
+ 1361              	.LASF22:
+ 1362 021d 70726D6F 		.ascii	"prmotor_turn\000"
+ 1362      746F725F 
+ARM GAS  C:\Users\austi\AppData\Local\Temp\ccvAQqjf.s 			page 28
+
+
+ 1362      7475726E 
+ 1362      00
+ 1363              	.LASF2:
+ 1364 022a 73686F72 		.ascii	"short int\000"
+ 1364      7420696E 
+ 1364      7400
+ 1365              	.LASF28:
+ 1366 0234 50574D5F 		.ascii	"PWM_Start\000"
+ 1366      53746172 
+ 1366      7400
+ 1367              	.LASF29:
+ 1368 023e 50574D5F 		.ascii	"PWM_Stop\000"
+ 1368      53746F70 
+ 1368      00
+ 1369              	.LASF4:
+ 1370 0247 6C6F6E67 		.ascii	"long int\000"
+ 1370      20696E74 
+ 1370      00
+ 1371              	.LASF26:
+ 1372 0250 6D6F746F 		.ascii	"motor_turn\000"
+ 1372      725F7475 
+ 1372      726E00
+ 1373              	.LASF3:
+ 1374 025b 73686F72 		.ascii	"short unsigned int\000"
+ 1374      7420756E 
+ 1374      7369676E 
+ 1374      65642069 
+ 1374      6E7400
+ 1375              	.LASF38:
+ 1376 026e 43794465 		.ascii	"CyDelay\000"
+ 1376      6C617900 
+ 1377              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
